@@ -1,0 +1,11 @@
+---
+- name: Ensure locales is installed
+  apt:
+    name: "locales"
+    state: "installed"
+
+- name: Configure locales
+  locale_gen:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ locales }}"
